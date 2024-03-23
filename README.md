@@ -1,8 +1,7 @@
-# React + Vite
+refernce ui 
+# login
+![image](https://github.com/alicehack2020/social-media-frontend/assets/86043310/44fa0569-5734-4dc8-9fd2-210d583c747b)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# register
+![image](https://github.com/alicehack2020/social-media-frontend/assets/86043310/e0316442-f768-44e7-b006-31f23c2b5247)
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
