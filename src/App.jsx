@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Navigate,
   Outlet,
@@ -12,15 +12,24 @@ import NavBar from "./components/NavBar";
 import Leftbar from "./components/Leftbar";
 import SideBar from "./components/SideBar";
 import Profile from "./pages/Profile";
+import { DarkModeContext } from "./context/darkModeContext";
 
 const App = () => {
-  const currentUser = false;
+  const currentUser = true;
+  //TODO 1.add dark theme logic here in tailwindcss
+  //TODO 2. add switch button in navbar
+
+  const { darkMode } = useContext(DarkModeContext);
 
   const Layout = () => {
     return (
-      <div>
+      <div
+        className={`${
+          darkMode ? "dark:bg-white dark:text-back" : " bg-black text-white"
+        }`}
+      >
         <NavBar />
-        <div className="flex">
+        <div className="flex justify-between">
           <Leftbar />
           <Outlet />
           <SideBar />
