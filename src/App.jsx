@@ -1,5 +1,10 @@
 import React from "react";
-import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  Outlet,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import { Home } from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -9,6 +14,8 @@ import SideBar from "./components/SideBar";
 import Profile from "./pages/Profile";
 
 const App = () => {
+  const currentUser = false;
+
   const Layout = () => {
     return (
       <div>
@@ -22,9 +29,20 @@ const App = () => {
     );
   };
 
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to="/login" />;
+    }
+    return children;
+  };
+
   const router = createBrowserRouter([
     {
-      element: <Layout />,
+      element: (
+        <ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>
+      ),
       path: "/",
       children: [
         {
