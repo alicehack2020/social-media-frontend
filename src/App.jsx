@@ -10,7 +10,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NavBar from "./components/NavBar";
 import Leftbar from "./components/Leftbar";
-import SideBar from "./components/SideBar";
+import SideBar from "./components/Right";
 import Profile from "./pages/Profile";
 import { DarkModeContext } from "./context/darkModeContext";
 

@@ -9,6 +9,8 @@ export const authProvider = ({ children }) => {
 
   const login = () => {
     //TODO login logic
+    //sample data
+    setCurrentUser({ id: 1, name: "John Doe", email: "m@gmial.com" });
   };
 
   useEffect(() => {
