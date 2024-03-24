@@ -13,13 +13,14 @@ import Leftbar from "./components/Leftbar";
 import Profile from "./pages/Profile";
 import { DarkModeContext } from "./context/darkModeContext.jsx";
 import Right from "./components/Right";
+import { AuthContext } from "./context/authContext.jsx";
 
 const App = () => {
-  const currentUser = true;
   //TODO 1.add dark theme logic here in tailwindcss
   //TODO 2. add switch button in navbar
 
   const { darkMode } = useContext(DarkModeContext);
+  const { currentUser } = useContext(AuthContext);
 
   const Layout = () => {
     return (

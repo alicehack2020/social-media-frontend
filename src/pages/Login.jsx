@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/authContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -11,11 +13,12 @@ const Login = () => {
         password: "pass",
       };
       await login(user);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
-
+  
   return (
     <div>
       <h1>Login</h1>
