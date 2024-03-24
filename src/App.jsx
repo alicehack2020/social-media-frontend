@@ -5,6 +5,7 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Home } from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -18,24 +19,27 @@ import { AuthContext } from "./context/authContext.jsx";
 const App = () => {
   //TODO 1.add dark theme logic here in tailwindcss
   //TODO 2. add switch button in navbar
-
   const { darkMode } = useContext(DarkModeContext);
   const { currentUser } = useContext(AuthContext);
 
+  const queryClient = new QueryClient();
+
   const Layout = () => {
     return (
-      <div
-        className={`${
-          darkMode ? "dark:bg-white dark:text-back" : " bg-black text-white"
-        }`}
-      >
-        <NavBar />
-        <div className="flex justify-between">
-          <Leftbar />
-          <Outlet />
-          <Right />
+      <QueryClientProvider client={queryClient}>
+        <div
+          className={`${
+            darkMode ? "dark:bg-white dark:text-back" : " bg-black text-white"
+          }`}
+        >
+          <NavBar />
+          <div className="flex justify-between">
+            <Leftbar />
+            <Outlet />
+            <Right />
+          </div>
         </div>
-      </div>
+      </QueryClientProvider>
     );
   };
 
