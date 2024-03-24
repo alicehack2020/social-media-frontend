@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { makeRequest } from "../axios";
+import PostCard from "./PostCard";
 
 const Post = () => {
   const { isloading, error, data } = useQuery({
@@ -14,7 +15,9 @@ const Post = () => {
   return (
     <div>
       <h1>Posts</h1>
-      {JSON.stringify(data)}
+      {data?.map((post) => (
+        <PostCard post={post} />
+      ))}
     </div>
   );
 };
