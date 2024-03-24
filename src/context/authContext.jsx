@@ -1,16 +1,22 @@
-import { createContext, useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
+import axios from "axios";
+export const AuthContext = createContext();
 
-const authContext = createContext();
-
-export const authProvider = ({ children }) => {
+export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
 
-  const login = () => {
-    //TODO login logic
-    //sample data
-    setCurrentUser({ id: 1, name: "John Doe", email: "m@gmial.com" });
+  const login = async (inputs) => {
+    const res = await axios.post(
+      "http://localhost:8800/api/auth/login",
+      inputs,
+      {
+        withCredentials: true,
+      }
+    );
+
+    setCurrentUser(res.data);
   };
 
   useEffect(() => {
@@ -21,9 +27,8 @@ export const authProvider = ({ children }) => {
   }, [currentUser]);
 
   return (
-    <authContext.Provider value={{ currentUser, login }}>
+    <AuthContext.Provider value={{ currentUser, login }}>
       {children}
-    </authContext.Provider>
+    </AuthContext.Provider>
   );
 };
-s;

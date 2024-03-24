@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { DarkModeContext } from "../context/darkModeContext";
+import { DarkModeContext } from "../context/darkModeContext.jsx";
 
 const NavBar = () => {
   const { toggleDarkMode } = useContext(DarkModeContext);

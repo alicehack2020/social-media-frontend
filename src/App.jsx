@@ -10,9 +10,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NavBar from "./components/NavBar";
 import Leftbar from "./components/Leftbar";
-import SideBar from "./components/Right";
 import Profile from "./pages/Profile";
-import { DarkModeContext } from "./context/darkModeContext";
+import { DarkModeContext } from "./context/darkModeContext.jsx";
+import Right from "./components/Right";
 
 const App = () => {
   const currentUser = true;
@@ -32,7 +32,7 @@ const App = () => {
         <div className="flex justify-between">
           <Leftbar />
           <Outlet />
-          <SideBar />
+          <Right />
         </div>
       </div>
     );
