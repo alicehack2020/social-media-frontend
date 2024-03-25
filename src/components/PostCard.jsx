@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Comments from "./Comments";
 const PostCard = ({ post }) => {
+  const [isCommentOpen, setIsCommentOpen] = useState(false);
+
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg m-4">
       <div>
@@ -11,7 +13,16 @@ const PostCard = ({ post }) => {
           <p className="text-gray-700 text-base">{post?.desc}</p>
         </div>
 
-        <Comments />
+        <div>
+          <div
+            className="p-1 border border-red-700 cursor-pointer"
+            onClick={() => setIsCommentOpen(!isCommentOpen)}
+          >
+            <span>open comments</span>
+          </div>
+
+          {isCommentOpen && <Comments postId={post.id} />}
+        </div>
       </div>
     </div>
   );
