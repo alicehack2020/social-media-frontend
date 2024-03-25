@@ -29,7 +29,7 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <div
           className={`${
-            darkMode ? "dark:bg-white dark:text-back" : " bg-black text-white"
+            darkMode ? " bg-black text-white" : " bg-white text-black"
           }`}
         >
           <NavBar />
