@@ -47,23 +47,41 @@ const AddPost = () => {
   };
 
   return (
-    <div className="shadow-md p-1 shadow-gray-400">
-      <input
-        type="text"
-        name="desc"
-        id=""
-        className="p-1 border border-gray-400 outline-none"
-        onChange={inputHandle}
-      />
-      <input
-        type="file"
-        name="img"
-        className="p-1"
-        onChange={(e) => setFile(e.target.files[0])}
-      />
-      <button className="border border-red-950 p-2" onClick={postHadle}>
-        add Post
-      </button>
+    <div className="shadow-md p-1 shadow-gray-400 flex justify-between">
+      <div>
+        <input
+          type="text"
+          name="desc"
+          id=""
+          className="p-1 border border-gray-400 outline-none"
+          onChange={inputHandle}
+        />
+        <div>
+          <input
+            type="file"
+            id="file"
+            name="img"
+            className="hidden"
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+          <label htmlFor="file" className="p-1 cursor-pointer">
+            <div className="  border border-green-950">
+              <h1>ADD IMAGE</h1>
+            </div>
+          </label>
+        </div>
+
+        <button className="border border-red-950 p-2" onClick={postHadle}>
+          add Post
+        </button>
+      </div>
+      {file && (
+        <img
+          src={URL.createObjectURL(file)}
+          alt=""
+          className="h-10 w-10 animate-pulse border-2 border-green-800"
+        />
+      )}
     </div>
   );
 };
