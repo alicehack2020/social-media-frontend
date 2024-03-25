@@ -5,36 +5,41 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Home } from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NavBar from "./components/NavBar";
 import Leftbar from "./components/Leftbar";
-import SideBar from "./components/Right";
 import Profile from "./pages/Profile";
-import { DarkModeContext } from "./context/darkModeContext";
+import { DarkModeContext } from "./context/darkModeContext.jsx";
+import Right from "./components/Right";
+import { AuthContext } from "./context/authContext.jsx";
 
 const App = () => {
-  const currentUser = true;
   //TODO 1.add dark theme logic here in tailwindcss
   //TODO 2. add switch button in navbar
-
   const { darkMode } = useContext(DarkModeContext);
+  const { currentUser } = useContext(AuthContext);
+
+  const queryClient = new QueryClient();
 
   const Layout = () => {
     return (
-      <div
-        className={`${
-          darkMode ? "dark:bg-white dark:text-back" : " bg-black text-white"
-        }`}
-      >
-        <NavBar />
-        <div className="flex justify-between">
-          <Leftbar />
-          <Outlet />
-          <SideBar />
+      <QueryClientProvider client={queryClient}>
+        <div
+          className={`${
+            darkMode ? " bg-black text-white" : " bg-white text-black"
+          }`}
+        >
+          <NavBar />
+          <div className="flex justify-between">
+            <Leftbar />
+            <Outlet />
+            <Right />
+          </div>
         </div>
-      </div>
+      </QueryClientProvider>
     );
   };
 
